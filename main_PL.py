@@ -24,6 +24,7 @@ import matplotlib.pyplot as plt
 import pickle
 sys.path.append('models')
 import resnet
+import cnn9
 import noisy_folder
 
 opt = args.args()
@@ -110,6 +111,8 @@ testloader = torch.utils.data.DataLoader(testset, batch_size=opt.batchSize,
 
 if opt.model == 'resnet34':
 	net = resnet.resnet34(in_channels=in_channels, num_classes=num_classes)
+elif opt.model == 'enn9':
+	net = cnn9.CNN9(in_channels=in_channels, num_classes=num_classes)
 else: logger.info('no model exists')
 
 weight = torch.FloatTensor(num_classes).zero_() + 1.
